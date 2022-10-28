@@ -15,7 +15,7 @@ const Details = (props) => {
 
     useEffect(() => {
         async function fetchData() {
-            const dogListApi = await axios.get(`http://localhost:3001/dogs/${urlRef}`)
+            const dogListApi = await axios.get(`/dogs/${urlRef}`)
             const dogArray = [
                 <div key={dogListApi.data.name}>
                     <h1>{dogListApi.data.name}</h1>

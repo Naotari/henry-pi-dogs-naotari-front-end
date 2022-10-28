@@ -33,7 +33,7 @@ const Creation = (props) => {
     useEffect(() => {
         const temperamentsTemp = []
         async function fetchData() {
-            const response = await axios.get("http://localhost:3001/temperaments")
+            const response = await axios.get("/temperaments")
             response.data.forEach(temp => temperamentsTemp.push(
                 <div className="Temp_Box" key={temp.name}>
                     <input type="checkbox" id={"temperamentCheckbox" + temp.name} value={temp.name} onChange={addTempCheckBox}/>
@@ -220,7 +220,7 @@ const Creation = (props) => {
             years: yearsMin + " - " + yearsMax,
             temperament
         }
-        axios.post("http://localhost:3001/dogs", dogCreation)
+        axios.post("/dogs", dogCreation)
         .then(function (response) {
             alert("The breed was created")
             setIsPending(false)

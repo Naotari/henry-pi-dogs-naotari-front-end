@@ -44,7 +44,7 @@ const Home = (props) => {
     //----------------------------------------Get full list-------------------------------------------
     useEffect(() => {
         const dogArray = []
-        axios.get(`http://localhost:3001/dogs`)
+        axios.get(`/dogs`)
         .then(dogListApi => {
             dogListApi.data.forEach(dog => dogArray.push(
                 <div key={dog.name} className="Home_Dog_Box">
@@ -53,7 +53,7 @@ const Home = (props) => {
                     <p>Temperament: {dog.temperament}</p>
                     <p>Weight: {dog.weight === "NaN"?"0 - 0":dog.weight} pounds</p>
                     {dog.created ? <p>Created Breed</p> : <p>Real Breed</p>}
-                    <a href={"http://localhost:3000/details/" + dog.id} className="Details_Button">Details</a>
+                    <a href={process.env.REACT_APP_API + "/details/" + dog.id} className="Details_Button">Details</a>
                 </div>
             ))
             setDogListRaw(dogArray);
@@ -84,7 +84,7 @@ const Home = (props) => {
     useEffect(() => {
         const temperamentsTemp = []
         async function fetchData() {
-            const response = await axios.get("http://localhost:3001/temperaments")
+            const response = await axios.get("/temperaments")
             response.data.forEach(temp => temperamentsTemp.push(<option key={temp.name} >{temp.name}</option>))
             setTemperamentFilterList(temperamentsTemp)
         }
