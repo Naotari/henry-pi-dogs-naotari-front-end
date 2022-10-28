@@ -53,7 +53,7 @@ const Home = (props) => {
                     <p>Temperament: {dog.temperament}</p>
                     <p>Weight: {dog.weight === "NaN"?"0 - 0":dog.weight} pounds</p>
                     {dog.created ? <p>Created Breed</p> : <p>Real Breed</p>}
-                    <a href={process.env.REACT_APP_API + "/details/" + dog.id} className="Details_Button">Details</a>
+                    <a href={process.env.REACT_APP_CLIENT + "/details/" + dog.id} className="Details_Button">Details</a>
                 </div>
             ))
             setDogListRaw(dogArray);
